@@ -63,9 +63,9 @@ git clone [URL_DEL_REPOSITORI]
 pip install -r requirements.txt
 ```
 
-3. Executa el servidor:
+3. Executa la comanda:
 ```bash
-python server.py
+uvicorn server:app --reload
 ```
 
 4. Obre el navegador a `http://localhost:8000`

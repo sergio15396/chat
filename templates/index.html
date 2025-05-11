@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ca" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeChat</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="top-buttons">
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </button>
+        <div class="admin-buttons">
+            <button onclick="showDeleteModal()" class="admin-btn delete-btn">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+            <button onclick="showAdminModal()" class="admin-btn admin-btn">
+                <i class="fas fa-user-shield"></i>
+            </button>
+        </div>
+    </div>
+
+    <h1><i class="fas fa-comments"></i> WeChat</h1>
+    
+    <div id="join-form" class="join-form">
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input id="username" placeholder="El teu nom" />
+        </div>
+        <div class="input-group">
+            <i class="fas fa-door-open"></i>
+            <input id="room" placeholder="Nom de la sala" />
+        </div>
+        <button onclick="join()"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+    </div>
+
+    <div id="chat" style="display:none;">
+        <div id="messages"></div>
+        
+        <div class="message-input">
+            <div class="input-group">
+                <i class="fas fa-arrow-right"></i>
+                <input id="input" placeholder="Escriu el teu missatge..." />
+            </div>
+            <button onclick="sendMsg()"><i class="fas fa-paper-plane"></i> Enviar</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Títol</h2>
+                <button class="close-button" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <i class="fas fa-hashtag"></i>
+                    <input id="modal-input" placeholder="..." />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeModal()">Cancel·lar</button>
+                <button id="modal-confirm" onclick="handleModalConfirm()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

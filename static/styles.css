@@ -1,0 +1,451 @@
+:root {
+    /* Light theme (default) */
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --background-color: #f8fafc;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --hover-color: #3b82f6;
+    --danger-color: #ef4444;
+    --success-color: #22c55e;
+    --icon-color: #64748b;
+    --card-bg: white;
+    --message-hover: #f8fafc;
+    --scrollbar-track: #f1f1f1;
+    --info-bg: #f8fafc;
+    --deleted-bg: #fee2e2;
+}
+
+[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --background-color: #0f172a;
+    --text-color: #e2e8f0;
+    --border-color: #334155;
+    --hover-color: #60a5fa;
+    --danger-color: #f87171;
+    --success-color: #4ade80;
+    --icon-color: #94a3b8;
+    --card-bg: #1e293b;
+    --message-hover: #334155;
+    --scrollbar-track: #1e293b;
+    --info-bg: #1e293b;
+    --deleted-bg: #7f1d1d;
+}
+
+/* Reset margins and prevent unwanted scroll */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h1 i {
+    color: var(--primary-color);
+}
+
+/* Top buttons container */
+.top-buttons {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:hover {
+    background: #2a2a2a;
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.theme-toggle i {
+    font-size: 1.4rem;
+    transition: transform 0.3s;
+    color: #fff;
+}
+
+.theme-toggle:hover i {
+    transform: scale(1.1);
+}
+
+/* Admin buttons */
+.admin-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.admin-btn {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.admin-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.admin-btn i {
+    font-size: 1.4rem;
+    transition: transform 0.3s;
+    color: #fff;
+}
+
+.admin-btn:hover i {
+    transform: scale(1.1);
+}
+
+.delete-btn {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+}
+
+.admin-btn:not(.delete-btn) {
+    background: #eab308;
+    border-color: #eab308;
+    color: white;
+}
+
+.admin-btn:not(.delete-btn):hover {
+    background: #facc15;
+    border-color: #facc15;
+}
+
+/* Join form styles */
+.join-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 800px;
+    flex-wrap: wrap;
+}
+
+.join-form .input-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Chat area */
+#chat {
+    width: 100%;
+    max-width: 800px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    padding: 1.5rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+#messages {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    height: 400px;
+    overflow-y: auto;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#messages div {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    word-wrap: break-word;
+}
+
+#messages div:hover {
+    background-color: var(--message-hover);
+}
+
+/* Message types */
+.message-info {
+    color: var(--icon-color);
+    font-style: italic;
+    padding: 0.5rem;
+    background-color: var(--info-bg);
+    border-radius: 6px;
+    margin: 0.5rem 0;
+}
+
+.message-deleted {
+    color: var(--danger-color);
+    font-style: italic;
+    padding: 0.5rem;
+    background-color: var(--deleted-bg);
+    border-radius: 6px;
+    margin: 0.5rem 0;
+}
+
+.msg-id {
+    color: var(--icon-color);
+    font-size: 0.9em;
+    font-family: monospace;
+    margin-right: 0.5rem;
+    opacity: 0.7;
+}
+
+/* Input styles */
+.input-group {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.input-group i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--icon-color);
+    font-size: 1.1rem;
+    pointer-events: none;
+    transition: color 0.3s;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    margin: 0.5rem 0;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.input-group input:focus + i {
+    color: var(--primary-color);
+}
+
+/* Message input area */
+.message-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.message-input .input-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Buttons */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+button i {
+    color: white !important;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    animation: modalSlideIn 0.3s ease-out;
+    transition: background-color 0.3s;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: var(--icon-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    color: var(--danger-color);
+    background: none;
+    transform: none;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-footer button:first-child {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.modal-footer button:first-child:hover {
+    background-color: var(--message-hover);
+}
